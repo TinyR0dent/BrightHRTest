@@ -1,6 +1,6 @@
 The frontend application is in "./frontend"
 
-in "./frontend" create a .env file and add copy and paste this prop into it (not the `):
+in "./frontend" create a .env file and add copy and paste this prop into it:
 
 `VITE_API_URL=http://127.0.0.1:8787`
 
