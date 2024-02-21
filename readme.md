@@ -1,5 +1,13 @@
-# BrightHR Front End Interview Tasks 🧑‍💻
+The frontend application is in "./frontend"
 
-If you're applying for a **Junior** or **Middleweight** developer role [👉 Follow this link](/junior-and-middleweight.md)
+in "./frontend" create a .env file and add copy and paste this prop into it (not the `):
 
-If you're applying for a **Senior** or **Principal** developer role [👉 Follow this link](/senior-and-principal.md)
+`VITE_API_URL=http://127.0.0.1:8787`
+
+run `pnpm i` to install packages
+
+in a seperate terminal in the top level "./Front-End-Tech-Tasks" run `npm run dev`
+
+run `pnpm dev` to start the frontend
+
+I didn't have time to properly implement the sorting functionality, and with more time I would like to have the search functionality find files inside folders, as well as displaying all files found, rather than just the closest one.
