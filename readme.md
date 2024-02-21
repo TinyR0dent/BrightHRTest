@@ -11,3 +11,5 @@ in a seperate terminal in the top level "./Front-End-Tech-Tasks" run `npm run de
 run `pnpm dev` to start the frontend
 
 I didn't have time to properly implement the sorting functionality, and with more time I would like to have the search functionality find files inside folders, as well as displaying all files found, rather than just the closest one.
+
+There's also an annoying issue with the testing, I made it outside of the repo and it worked, then when i merged it in it's throwing a strange file extension error. Tried mulitple online sources with no luck.
