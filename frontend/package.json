@@ -8,18 +8,20 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "ts-mocha -p ./tsconfig.json src/**/*.test.ts"
+    "test": "ts-mocha -n loader=ts-node/esm -p tsconfig.json src/**/*.test.ts"
   },
   "dependencies": {
     "@types/chai": "^4.3.11",
     "axios": "^1.6.7",
     "axios-mock-adapter": "^1.22.0",
+    "chai": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "ts-mocha": "^10.0.0"
   },
   "devDependencies": {
+    "@types/expect": "^24.3.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.56",

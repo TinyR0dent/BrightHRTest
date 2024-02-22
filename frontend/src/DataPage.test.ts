@@ -6,31 +6,35 @@ describe("DataPage", async () => {
   it("should get Data from api", async () => {
     const mockAxios = new MockAdapter(axios);
 
-    const res = await mockAxios.onGet("/api/absences").reply(200, fakeData);
+    mockAxios.onGet("/api/directories").reply(200, fakeData);
 
-    expect(res).to.equal(fakeData);
+    const res = await axios.get(`/api/directories`);
+
+    expect(res.data).to.deep.equal(fakeData);
   });
 
   it("should request data that matches a search criteria", async () => {
     const mockAxios = new MockAdapter(axios);
 
-    let res = await mockAxios.onGet(`/api/directories`);
+    mockAxios.onGet(`/api/directories`).reply(200, fakeData);
+
+    const res = await axios.get(`/api/directories`);
+
     if (res.data) {
       const searchCriteria = "employee";
-
       const filteredData: DataType = res.data.filter((item: File | Folder) =>
         item.name.toLowerCase().includes(searchCriteria)
       );
 
-      res = filteredData;
+      expect(filteredData).to.deep.equal([
+        {
+          type: "pdf",
+          name: "Employee Handbook",
+          added: "2017-01-06",
+          size: 100,
+        },
+      ]);
     }
-
-    expect(res).to.equal({
-      type: "pdf",
-      name: "Employee Handbook",
-      added: "2017-01-06",
-      size: Math.floor(Math.random() * (900 - 300) + 300),
-    });
   });
 });
 
@@ -54,13 +58,13 @@ const fakeData = [
     type: "pdf",
     name: "Employee Handbook",
     added: "2017-01-06",
-    size: Math.floor(Math.random() * (900 - 300) + 300),
+    size: 100,
   },
   {
     type: "pdf",
     name: "Public Holiday policy",
     added: "2016-12-06",
-    size: Math.floor(Math.random() * (900 - 300) + 300),
+    size: 200,
   },
   {
     type: "folder",
@@ -70,13 +74,13 @@ const fakeData = [
         type: "doc",
         name: "Expenses claim form",
         added: "2017-05-02",
-        size: Math.floor(Math.random() * (900 - 300) + 300),
+        size: 300,
       },
       {
         type: "doc",
         name: "Fuel allowances",
         added: "2017-05-03",
-        size: Math.floor(Math.random() * (900 - 300) + 300),
+        size: 400,
       },
     ],
   },
@@ -84,7 +88,7 @@ const fakeData = [
     type: "csv",
     name: "Cost centres",
     added: "2016-08-12",
-    size: Math.floor(Math.random() * (900 - 300) + 300),
+    size: 500,
   },
   {
     type: "folder",
@@ -94,13 +98,13 @@ const fakeData = [
         type: "doc",
         name: "Christmas party",
         added: "2017-12-01",
-        size: Math.floor(Math.random() * (900 - 300) + 300),
+        size: 600,
       },
       {
         type: "mov",
         name: "Welcome to the company!",
         added: "2015-04-24",
-        size: Math.floor(Math.random() * (900 - 300) + 300),
+        size: 700,
       },
     ],
   },
